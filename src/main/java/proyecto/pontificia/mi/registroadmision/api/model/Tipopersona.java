@@ -12,7 +12,7 @@ public class Tipopersona {
     @Column(name = "idtipopersona")
 
     private Integer id;
-    private String descripción;
+    private String descripcion;
 
 
 }
