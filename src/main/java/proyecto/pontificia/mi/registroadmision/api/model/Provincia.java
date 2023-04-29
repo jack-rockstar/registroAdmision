@@ -14,5 +14,11 @@ public class Provincia {
     private Integer id;
     private String nomprovincia;
     private String ubigeo;
+    private Float longitud;
+    private Float latitud;
+
+    @ManyToOne
+    @JoinColumn (name="iddepartamento",referencedColumnName = "iddepartamento" )
+    private Departamento iddepartamento;
 
 }
