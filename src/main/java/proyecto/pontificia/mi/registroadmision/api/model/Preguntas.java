@@ -1,10 +1,10 @@
 package proyecto.pontificia.mi.registroadmision.api.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
 public class Preguntas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
