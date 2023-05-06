@@ -9,12 +9,10 @@ public class Departamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iddepartamento")
+    @Column(name = "id")
 
     private Integer id;
     private String nomdepartamento;
     private String ubigeo;
-    private Float longitud;
-    private Float latitud;
 
 }

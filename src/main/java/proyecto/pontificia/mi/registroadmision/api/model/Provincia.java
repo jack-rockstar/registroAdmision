@@ -9,14 +9,11 @@ public class Provincia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idprovincia")
+    @Column(name = "id")
 
 
     private Integer id;
-    private String nomprovincia;
-    private String ubigeo;
-    private Float longitud;
-    private Float latitud;
+    private String nombreProvincia;
 
     @ManyToOne
     @JoinColumn (name="iddepartamento",referencedColumnName = "iddepartamento" )
