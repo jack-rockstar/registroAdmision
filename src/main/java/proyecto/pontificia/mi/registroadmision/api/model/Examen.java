@@ -15,4 +15,6 @@ public class Examen {
 
     private Date fechaInicio;
     private Date fechaFin;
+
+    private Float precioExamen;
 }
