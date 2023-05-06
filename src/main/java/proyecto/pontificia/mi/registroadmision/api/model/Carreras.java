@@ -8,8 +8,9 @@ import jakarta.persistence.Id;
 public class Carreras {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCalificacion")
+    @Column(name = "id")
     private Integer id;
 
     private Integer idAlumno;
+    private String nombreCarrera;
 }
