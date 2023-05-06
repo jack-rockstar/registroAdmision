@@ -11,6 +11,5 @@ public class Carreras {
     @Column(name = "id")
     private Integer id;
 
-    private Integer idAlumno;
     private String nombreCarrera;
 }

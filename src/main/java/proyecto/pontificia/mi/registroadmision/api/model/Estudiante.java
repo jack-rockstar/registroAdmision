@@ -23,6 +23,7 @@ public class Estudiante {
     private Rol rol;
     private String user;
     private String pas;
+    private Integer idCarrera;
 
     public enum Rol{
         ADMIN,
