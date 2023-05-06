@@ -14,7 +14,5 @@ public class Departamento {
     private Integer id;
     private String nomdepartamento;
     private String ubigeo;
-    private Float longitud;
-    private Float latitud;
 
 }
