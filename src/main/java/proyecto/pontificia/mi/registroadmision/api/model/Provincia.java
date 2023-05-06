@@ -11,6 +11,7 @@ public class Provincia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idprovincia")
 
+
     private Integer id;
     private String nomprovincia;
     private String ubigeo;
