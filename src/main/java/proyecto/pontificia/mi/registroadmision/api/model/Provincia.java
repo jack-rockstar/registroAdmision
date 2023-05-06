@@ -15,4 +15,5 @@ public class Provincia {
     private String nomprovincia;
     private String ubigeo;
 
+
 }
