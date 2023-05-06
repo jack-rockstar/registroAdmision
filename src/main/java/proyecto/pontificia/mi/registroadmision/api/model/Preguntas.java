@@ -14,5 +14,5 @@ public class Preguntas {
     private Integer idExamen;
     private String descPregunta;
     private String descRespuesta;
-    private Boolean Estado;
+    private Boolean estado;
 }
