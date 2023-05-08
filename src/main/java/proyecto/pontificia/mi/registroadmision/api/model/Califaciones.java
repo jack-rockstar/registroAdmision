@@ -9,10 +9,14 @@ import lombok.Data;
 public class Califaciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idCalificaicon")
     private Integer id;
-
-    private long idEstudiante;
-    private long idExamen;
     private String nota;
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario idEstudiante;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Examen idExamen;
 }

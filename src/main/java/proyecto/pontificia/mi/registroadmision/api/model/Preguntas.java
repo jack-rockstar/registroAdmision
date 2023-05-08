@@ -8,11 +8,13 @@ import lombok.Data;
 public class Preguntas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idPreguntas")
     private Integer id;
-
-    private Integer idExamen;
     private String descPregunta;
     private String descRespuesta;
-    private Boolean estado;
+
+    @ManyToOne()
+    @JoinColumn(name = "idExamen")
+    private Examen idExamen;
+
 }

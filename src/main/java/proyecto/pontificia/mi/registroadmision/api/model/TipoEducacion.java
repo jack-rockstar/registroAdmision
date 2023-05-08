@@ -5,15 +5,13 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Carreras {
+public class TipoEducacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCarrera")
+    @Column(name = "idTipoEducacion")
     private Integer id;
+    private String nombre;
+    private String nombreCorto;
 
-    private String nombreCarrera;
 
-    @ManyToOne
-    @JoinColumn(name = "idTipoEducacion")
-    private TipoEducacion idTipoEducacion;
 }

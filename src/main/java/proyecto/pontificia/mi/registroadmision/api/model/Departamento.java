@@ -9,10 +9,9 @@ public class Departamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idDepartamento")
 
     private Integer id;
-    private String nomdepartamento;
-    private String ubigeo;
+    private String nombreDepartamento;
 
 }

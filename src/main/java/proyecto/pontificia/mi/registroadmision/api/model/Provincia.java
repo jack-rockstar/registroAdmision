@@ -9,15 +9,15 @@ public class Provincia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idProvincia")
 
 
     private Integer id;
     private String nombreProvincia;
 
     @ManyToOne
-    @JoinColumn (name="iddepartamento",referencedColumnName = "iddepartamento" )
-    private Departamento iddepartamento;
+    @JoinColumn (name="idDepartamento")
+    private Departamento idDepartamento;
 
 
 }

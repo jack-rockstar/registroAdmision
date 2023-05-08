@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping ("/api/usuario")
+@RequestMapping("/api/usuario")
 public class UsuarioController {
-
     @GetMapping
-    String  Hola (){
-        return "Hola";
+    String holaMundo(){
+        return "hola mundo!";
     }
-
 }
