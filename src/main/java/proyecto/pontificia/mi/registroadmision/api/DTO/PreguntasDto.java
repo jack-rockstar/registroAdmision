@@ -1,2 +1,4 @@
-package proyecto.pontificia.mi.registroadmision.api.DTO;public class PreguntasDto {
+package proyecto.pontificia.mi.registroadmision.api.DTO;
+public class PreguntasDto {
+
 }
