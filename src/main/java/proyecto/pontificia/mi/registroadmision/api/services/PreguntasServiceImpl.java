@@ -24,12 +24,13 @@ public class PreguntasServiceImpl implements PreguntasService {
     @Override
     public Preguntas registrarPreguntas(Preguntas preguntas) {
         try {
+            Examen examen = examenRepository.findById(preguntas.getExamen().getId())
+                    .orElseThrow(() -> new RuntimeException("Examen no encontrado"));
+
             Preguntas preguntaNueva = new Preguntas();
 
             preguntaNueva.setDescPregunta(preguntas.getDescPregunta());
             preguntaNueva.setDescRespuesta(preguntas.getDescRespuesta());
-            Examen examen = examenRepository.findById(preguntas.getExamen().getId()).orElseThrow(() -> new RuntimeException("Examen no encontrado"));
-
             preguntaNueva.setExamen(examen);
 
             return preguntasRepository.save(preguntaNueva);
