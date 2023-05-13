@@ -1,5 +1,6 @@
 package proyecto.pontificia.mi.registroadmision.api.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,24 +21,19 @@ public class Usuario {
     private String numeroDoc;
     private String telefono;
     private String correo;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date fechaNacimiento;
     private String genero;
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
     private String user;
     private String ubigeo;
     private String contraseña;
     @OneToOne()
     @JoinColumn(name = "idCarrera")
-    private Carreras idCarrera;
+    private Carreras carrera;
     @OneToOne()
     @JoinColumn(name = "idTipoPersona")
-    private Tipopersona idTipoPersona;
+    private TipoPersona tipoPersona;
 
-    public enum Rol{
-        ADMIN,
-        ESTUDIANTE
-    }
 
 
 }

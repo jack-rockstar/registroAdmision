@@ -13,7 +13,7 @@ public class Carreras {
 
     private String nombreCarrera;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipoEducacion")
-    private TipoEducacion idTipoEducacion;
+    private TipoEducacion tipoEducacion;
 }

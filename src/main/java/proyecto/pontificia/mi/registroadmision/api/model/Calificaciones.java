@@ -6,17 +6,17 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Califaciones {
+public class Calificaciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCalificaicon")
+    @Column(name = "idCalificaciones")
     private Integer id;
-    private String nota;
+    private Float nota;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
-    private Usuario idEstudiante;
+    private Usuario estudiante;
     @OneToOne
-    @JoinColumn(name = "id")
-    private Examen idExamen;
+    @JoinColumn(name = "idExamen")
+    private Examen examen;
 }

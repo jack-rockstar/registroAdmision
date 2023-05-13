@@ -1,31 +1,29 @@
 package proyecto.pontificia.mi.registroadmision.api.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-import proyecto.pontificia.mi.registroadmision.api.model.Usuario;
-import proyecto.pontificia.mi.registroadmision.api.services.UsuarioService;
+import proyecto.pontificia.mi.registroadmision.api.model.Calificaciones;
+import proyecto.pontificia.mi.registroadmision.api.services.CalificacionesService;
 import proyecto.pontificia.mi.registroadmision.api.utils.Response;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
-public class UsuarioController {
-
+@RequestMapping("/api")
+public class CalificacionesController {
     @Autowired
-    private UsuarioService usuarioService;
+    private CalificacionesService calificacionesService;
 
-    @GetMapping("/usuario")
-    public Response obtenerUsuario(@PageableDefault(size = 10, page = 0) Pageable pageable) {
+    @GetMapping("/calificacion")
+    public Response obtenerCalificaciones(@PageableDefault(size = 10, page = 0) Pageable pageable) {
         Response respuesta = new Response();
         try {
-            List<Usuario> tiposEducacion = usuarioService.obtenerUsuarios(pageable);
+            List<Calificaciones> califaciones = calificacionesService.obtenerCalificaciones(pageable);
             respuesta.setCodigoRespuesta(200);
             respuesta.setMensajeRespuesta("Operacion correcta");
-            respuesta.setData(tiposEducacion);
+            respuesta.setData(califaciones);
         } catch (Exception e) {
             respuesta.setCodigoRespuesta(500);
             respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
@@ -34,14 +32,14 @@ public class UsuarioController {
         return respuesta;
     }
 
-    @PostMapping("/usuario")
-    public Response registrarUsuario(@RequestBody Usuario usuario) {
+    @PostMapping("/calificacion")
+    public Response registrarCalificacion(@RequestBody Calificaciones calificacion) {
         Response respuesta = new Response();
         try {
-            Usuario usuario1 = usuarioService.registrarUsuario(usuario);
+            Calificaciones califacionesRegistrado = calificacionesService.registrarCalificaciones(calificacion);
             respuesta.setCodigoRespuesta(200);
             respuesta.setMensajeRespuesta("Operacion correcta");
-            respuesta.setData(usuario1);
+            respuesta.setData(califacionesRegistrado);
         } catch (Exception e) {
             respuesta.setCodigoRespuesta(500);
             respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
@@ -51,18 +49,18 @@ public class UsuarioController {
     }
 
 
-    @PutMapping("/usuario/{id}")
-    public Response actualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
+    @PutMapping("/calificacion/{id}")
+    public Response actualizarCalificacion(@PathVariable Integer id, @RequestBody Calificaciones califaciones) {
         Response respuesta = new Response();
         try {
-            Usuario usuario1 = usuarioService.actualizarUsuario(id, usuario);
-            if (usuario1 != null) {
+            Calificaciones califaciones1 = calificacionesService.actualizarCalificaciones(id, califaciones);
+            if (califaciones1 != null) {
                 respuesta.setCodigoRespuesta(200);
-                respuesta.setMensajeRespuesta("Usuario actualizado correctamente");
-                respuesta.setData(usuario1);
+                respuesta.setMensajeRespuesta("Calificacion actualizado correctamente");
+                respuesta.setData(califaciones1);
             } else {
                 respuesta.setCodigoRespuesta(404);
-                respuesta.setMensajeRespuesta("No se encontró el usuario con ese id");
+                respuesta.setMensajeRespuesta("No se encontró la calificacion con ese id");
                 respuesta.setData(null);
             }
         } catch (Exception e) {
@@ -73,18 +71,18 @@ public class UsuarioController {
         return  respuesta;
     }
 
-    @DeleteMapping("/usuario/{id}")
-    public Response eliminarUsuario(@PathVariable Integer id) {
+    @DeleteMapping("/calificacion/{id}")
+    public Response eliminarCalificacion(@PathVariable Integer id) {
         Response respuesta = new Response();
         try {
-            Usuario usuario = usuarioService.eliminarUsuario(id);
-            if (usuario != null) {
+            Calificaciones califaciones = calificacionesService.eliminarCalificaciones(id);
+            if (califaciones != null) {
                 respuesta.setCodigoRespuesta(200);
-                respuesta.setMensajeRespuesta("Usuario eliminado correctamente");
-                respuesta.setData(usuario);
+                respuesta.setMensajeRespuesta("Calificacion eliminado correctamente");
+                respuesta.setData(califaciones);
             } else {
                 respuesta.setCodigoRespuesta(404);
-                respuesta.setMensajeRespuesta("No se encontró el usuario con ese id");
+                respuesta.setMensajeRespuesta("No se encontró la calificacion con ese id");
                 respuesta.setData(null);
             }
         } catch (Exception e) {
@@ -94,4 +92,5 @@ public class UsuarioController {
         }
         return  respuesta;
     }
+
 }
