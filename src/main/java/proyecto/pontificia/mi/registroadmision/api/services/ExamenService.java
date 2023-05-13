@@ -14,4 +14,6 @@ public interface ExamenService {
     Examen actualizarExamen(Integer id, Examen examen);
 
     Examen eliminarExamen(Integer id);
+
+    Examen obtenerExamenById(Integer id);
 }

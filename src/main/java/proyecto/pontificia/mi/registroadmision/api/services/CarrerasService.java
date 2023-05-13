@@ -13,4 +13,6 @@ public interface CarrerasService {
     Carreras actualizarCarreras(Integer id, Carreras carreras);
 
     Carreras eliminarCarreras(Integer id);
+
+    Carreras obtenerCarreraById(Integer id);
 }

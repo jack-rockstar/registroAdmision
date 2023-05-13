@@ -22,10 +22,26 @@ public class UsuarioController {
     public Response obtenerUsuario(@PageableDefault(size = 10, page = 0) Pageable pageable) {
         Response respuesta = new Response();
         try {
-            List<Usuario> tiposEducacion = usuarioService.obtenerUsuarios(pageable);
+            List<Usuario> usuario = usuarioService.obtenerUsuarios(pageable);
             respuesta.setCodigoRespuesta(200);
             respuesta.setMensajeRespuesta("Operacion correcta");
-            respuesta.setData(tiposEducacion);
+            respuesta.setData(usuario);
+        } catch (Exception e) {
+            respuesta.setCodigoRespuesta(500);
+            respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
+            respuesta.setData(null);
+        }
+        return respuesta;
+    }
+
+    @GetMapping("/usuario/{id}")
+    public Response obtenerUsuario(@PathVariable Integer id) {
+        Response respuesta = new Response();
+        try {
+            Usuario usuario = usuarioService.obtenerUsuarioById(id);
+            respuesta.setCodigoRespuesta(200);
+            respuesta.setMensajeRespuesta("Operacion correcta");
+            respuesta.setData(usuario);
         } catch (Exception e) {
             respuesta.setCodigoRespuesta(500);
             respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());

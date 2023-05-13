@@ -49,6 +49,17 @@ public class CarrerasServiceImpl implements CarrerasService {
     }
 
     @Override
+    public Carreras obtenerCarreraById(Integer id) {
+        try {
+            Carreras carreras = carrerasRepository.findById(id).orElseThrow(() -> new RuntimeException("Carreras no encontrado"));
+            return carreras;
+        }catch (Exception e){
+            return  null;
+        }
+    }
+
+
+    @Override
     public Carreras actualizarCarreras(Integer id, Carreras carreras) {
         try {
             Carreras carrerasActuales = carrerasRepository.findById(id).orElseThrow(() -> new RuntimeException("Carreras no encontrado"));

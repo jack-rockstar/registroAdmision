@@ -43,6 +43,16 @@ public class ExamenServiceImpl implements ExamenService {
     }
 
     @Override
+    public Examen obtenerExamenById(Integer id) {
+        try {
+            Examen examen = examenRepository.findById(id).orElseThrow(() -> new RuntimeException("Examen no encontrado"));
+            return examen;
+        }catch (Exception e){
+            return  null;
+        }
+    }
+
+    @Override
     public Examen actualizarExamen(Integer id, Examen examen) {
         try {
             Examen examenActual = examenRepository.findById(id).orElseThrow(() -> new RuntimeException("Examen no encontrado"));

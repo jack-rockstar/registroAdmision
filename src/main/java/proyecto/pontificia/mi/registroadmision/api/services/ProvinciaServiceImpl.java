@@ -22,7 +22,7 @@ public class ProvinciaServiceImpl implements ProvinciaService {
             Provincia provinciaNueva = new Provincia();
 
             provinciaNueva.setNombreProvincia(provincia.getNombreProvincia());
-            provinciaNueva.setIdDepartamento(provincia.getIdDepartamento());
+            provinciaNueva.setDepartamento(provincia.getDepartamento());
 
             return provinciaRepository.save(provinciaNueva);
         }catch (Exception e){
@@ -46,7 +46,7 @@ public class ProvinciaServiceImpl implements ProvinciaService {
             Provincia provinciaActual = provinciaRepository.findById(id).orElseThrow(() -> new RuntimeException("Provincia no encontrado"));
 
             provinciaActual.setNombreProvincia(provincia.getNombreProvincia());
-            provinciaActual.setIdDepartamento(provincia.getIdDepartamento());
+            provinciaActual.setDepartamento(provincia.getDepartamento());
 
             return provinciaRepository.save(provinciaActual);
         }catch (Exception e){

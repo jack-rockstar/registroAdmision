@@ -36,6 +36,23 @@ public class CarrerasController {
         return respuesta;
     }
 
+    @GetMapping("/carreras/{id}")
+    public Response obtenerCarrera(@PathVariable Integer id) {
+        Response respuesta = new Response();
+        try {
+            Carreras carreras = carrerasService.obtenerCarreraById(id);
+            respuesta.setCodigoRespuesta(200);
+            respuesta.setMensajeRespuesta("Operacion correcta");
+            respuesta.setData(carreras);
+        } catch (Exception e) {
+            respuesta.setCodigoRespuesta(500);
+            respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
+            respuesta.setData(null);
+        }
+        return respuesta;
+    }
+
+
     @PostMapping("/carreras")
     public Response registrarCarreras(@RequestBody Carreras carreras) {
         Response respuesta = new Response();

@@ -17,7 +17,7 @@ public class Provincia {
 
     @ManyToOne
     @JoinColumn (name="idDepartamento")
-    private Departamento idDepartamento;
+    private Departamento Departamento;
 
 
 }

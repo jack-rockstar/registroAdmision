@@ -14,4 +14,6 @@ public interface UsuarioService {
     Usuario actualizarUsuario(Integer id, Usuario usuario);
 
     Usuario eliminarUsuario(Integer id);
+
+    Usuario obtenerUsuarioById(Integer id);
 }

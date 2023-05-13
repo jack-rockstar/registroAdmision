@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import proyecto.pontificia.mi.registroadmision.api.model.Examen;
+import proyecto.pontificia.mi.registroadmision.api.model.Usuario;
 import proyecto.pontificia.mi.registroadmision.api.services.ExamenService;
 import proyecto.pontificia.mi.registroadmision.api.utils.Response;
 
@@ -32,6 +33,23 @@ public class ExamenController {
         }
         return respuesta;
     }
+
+    @GetMapping("/examen/{id}")
+    public Response obtenerExamenById(@PathVariable Integer id) {
+        Response respuesta = new Response();
+        try {
+            Examen examen = examenService.obtenerExamenById(id);
+            respuesta.setCodigoRespuesta(200);
+            respuesta.setMensajeRespuesta("Operacion correcta");
+            respuesta.setData(examen);
+        } catch (Exception e) {
+            respuesta.setCodigoRespuesta(500);
+            respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
+            respuesta.setData(null);
+        }
+        return respuesta;
+    }
+
 
     @PostMapping("/examen")
     public Response registrarExamen(@RequestBody Examen examen) {

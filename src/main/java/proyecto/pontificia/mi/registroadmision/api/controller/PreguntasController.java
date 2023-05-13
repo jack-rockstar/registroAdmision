@@ -49,6 +49,23 @@ public class PreguntasController {
         return respuesta;
     }
 
+    @GetMapping("/preguntas/{id}")
+    public Response obtenerPregunta(@PathVariable Integer id) {
+        Response respuesta = new Response();
+        try {
+            Preguntas preguntas = preguntasService.obtenerPreguntaById(id);
+            respuesta.setCodigoRespuesta(200);
+            respuesta.setMensajeRespuesta("Operacion correcta");
+            respuesta.setData(preguntas);
+        } catch (Exception e) {
+            respuesta.setCodigoRespuesta(500);
+            respuesta.setMensajeRespuesta("Error en la operacion: " + e.getMessage());
+            respuesta.setData(null);
+        }
+        return respuesta;
+    }
+
+
 
     @PutMapping("/preguntas/{id}")
     public Response actualizarPreguntas(@PathVariable Integer id, @RequestBody Preguntas preguntas) {

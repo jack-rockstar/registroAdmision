@@ -39,6 +39,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setCorreo(dataUsuario.getCorreo());
             usuario.setFechaNacimiento(dataUsuario.getFechaNacimiento());
             usuario.setUser(dataUsuario.getUser());
+            usuario.setGenero(dataUsuario.getGenero());
             usuario.setUbigeo(dataUsuario.getUbigeo());
             usuario.setContraseña(dataUsuario.getContraseña());
             Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
@@ -72,6 +73,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioActual.setFechaNacimiento(dataUsuario.getFechaNacimiento());
             usuarioActual.setUser(dataUsuario.getUser());
             usuarioActual.setUbigeo(dataUsuario.getUbigeo());
+            usuarioActual.setGenero(dataUsuario.getGenero());
             usuarioActual.setContraseña(dataUsuario.getContraseña());
             usuarioActual.setCarrera(dataUsuario.getCarrera());
             //Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
@@ -95,7 +97,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioRepository.deleteById(id);
             return usuario;
         }catch (Exception e){
-            return  null;
+            throw new EntityNotFoundException("Error usuario ", e);
         }
     }
 
@@ -106,6 +108,16 @@ public class UsuarioServiceImpl implements UsuarioService {
             return usuarios.getContent();
         }catch (Exception e){
             return  null;
+        }
+    }
+
+    @Override
+    public Usuario obtenerUsuarioById(Integer id){
+        try {
+            Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+            return usuario;
+        }catch (Exception e){
+            throw new EntityNotFoundException("Error usuario ", e);
         }
     }
 

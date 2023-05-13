@@ -14,4 +14,6 @@ public interface PreguntasService {
     Preguntas actualizarPreguntas(Integer id, Preguntas preguntas);
 
     Preguntas eliminarPreguntas(Integer id);
+    
+    Preguntas obtenerPreguntaById(Integer id);
 }

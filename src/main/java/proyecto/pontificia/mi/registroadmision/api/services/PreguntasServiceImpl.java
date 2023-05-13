@@ -51,6 +51,18 @@ public class PreguntasServiceImpl implements PreguntasService {
     }
 
     @Override
+    public Preguntas obtenerPreguntaById(Integer id) {
+        try {
+            Preguntas preguntas = preguntasRepository.findById(id).orElseThrow(() -> new RuntimeException("Preguntas no encontrado"));;
+            return preguntas;
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new EntityNotFoundException("Error pregunta", e);
+        }
+    }
+
+
+    @Override
     public Preguntas actualizarPreguntas(Integer id, Preguntas preguntas) {
         try {
             Preguntas preguntaActual = preguntasRepository.findById(id).orElseThrow(() -> new RuntimeException("Preguntas no encontrado"));
