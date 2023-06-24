@@ -13,8 +13,8 @@ RUN mvn dependency:go-offline -B
 # Copia el resto de los archivos al contenedor
 COPY . .
 
-# Compila la aplicación usando Maven en el directorio /target
-RUN mvn clean package -DskipTests -Dmaven.test.failure.ignore=true
+# Compila la aplicación sin ejecutar las pruebas
+RUN mvn clean package -Dmaven.test.skip=true
 
 # Expone el puerto en el que se ejecuta tu aplicación
 EXPOSE 8080
