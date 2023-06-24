@@ -6,7 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Package stage
-FROM openjdk:11
+FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 COPY --from=build /home/app/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar ./registroAdmision.jar
 EXPOSE 8080
