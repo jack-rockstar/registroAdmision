@@ -1,13 +1,23 @@
-# Stage 1: Build the application with Maven
-FROM maven:3.8.5-openjdk-17 AS builder
-WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
+# Utiliza una imagen base con Maven y Java instalados
+FROM maven:3.8.4-openjdk-11
 
-# Stage 2: Create the final image with Java only
-FROM openjdk:17-alpine
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
-COPY --from=builder /app/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar ./registroAdmision.jar
+
+# Copia el archivo pom.xml al contenedor
+COPY pom.xml .
+
+# Descarga las dependencias de Maven
+RUN mvn dependency:go-offline -B
+
+# Copia el resto de los archivos al contenedor
+COPY . .
+
+# Compila la aplicación usando Maven
+RUN mvn package -DskipTests
+
+# Expone el puerto en el que se ejecuta tu aplicación
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "registroAdmision.jar"]
+
+# Comando para ejecutar tu aplicación cuando se inicie el contenedor
+CMD ["java", "-jar", "target/nombre_de_tu_app.jar"]
