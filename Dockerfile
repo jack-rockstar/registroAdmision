@@ -1,14 +1,18 @@
-# Build stage
+# Base image with Maven to build the application
 FROM maven:3.8.5-openjdk-17 AS builder
-WORKDIR /workdir
+
+WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn dependency:go-offline
+
 RUN mvn package -DskipTests
 
-# Package stage
-FROM openjdk:17.0-jdk-slim
+# Final image with Java to run the application
+FROM adoptopenjdk/openjdk17:alpine-jre
+
 WORKDIR /app
-EXPOSE 9090
-COPY --from=builder /workdir/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar registroAdmision.jar
+COPY --from=builder /app/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar ./registroAdmision.jar
+
+EXPOSE 8080
+
 ENTRYPOINT ["java", "-jar", "registroAdmision.jar"]
