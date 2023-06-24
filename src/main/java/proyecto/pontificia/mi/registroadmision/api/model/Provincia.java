@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "provincia")
 public class Provincia {
 
     @Id

@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  registroAdmisionApp:
+    container_name: registroAdmisionApp
+    image: registro-admision-service
+    build: .
+    ports:
+      - 9090:9090
+    environment:
+      - DATABASE_URL=jdbc:mysql://registroAdmisionDb/bd_prueba?serverTimezone=UTC
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=JacknajarrO4555
+    depends_on:
+      - registroAdmisionDb
+    restart: always
+
+  registroAdmisionDb:
+    container_name: registroAdmisionDb
+    image: mysql:8.0.32
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: JacknajarrO4555
+      MYSQL_DATABASE: bd_prueba
+    volumes:
+      - registroAdmisionDbData:/var/lib/mysql
+
+volumes:
+  registroAdmisionDbData:

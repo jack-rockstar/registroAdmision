@@ -51,11 +51,9 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setTipoPersona(tipoPersona);
 
 
-
-
             return usuarioRepository.save(usuario);
         }catch (Exception e){
-            return null;
+            throw new EntityNotFoundException(e);
         }
     }
 
@@ -97,7 +95,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioRepository.deleteById(id);
             return usuario;
         }catch (Exception e){
-            throw new EntityNotFoundException("Error usuario ", e);
+            throw new EntityNotFoundException("Error usuario no encontrado ", e);
         }
     }
 
@@ -117,7 +115,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
             return usuario;
         }catch (Exception e){
-            throw new EntityNotFoundException("Error usuario ", e);
+            throw new EntityNotFoundException("Error usuario no encontrado ", e);
         }
     }
 
