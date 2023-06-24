@@ -20,4 +20,4 @@ RUN mvn package -DskipTests
 EXPOSE 8080
 
 # Comando para ejecutar tu aplicación cuando se inicie el contenedor
-CMD ["java", "-jar", "target/nombre_de_tu_app.jar"]
+CMD ["java", "-jar", "target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar"]
