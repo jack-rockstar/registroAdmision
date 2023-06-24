@@ -8,6 +8,6 @@ RUN mvn package -DskipTests
 # Package stage
 FROM openjdk:17.0-jdk-slim
 WORKDIR /app
-COPY --from=builder /workdir/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar  registroAdmision.jar
+ADD --from=builder /workdir/target/mi.registroadmision.api-0.0.1-SNAPSHOT.jar  registroAdmision.jar
 EXPOSE 9090
 ENTRYPOINT ["java", "-jar", "registroAdmision.jar"]
