@@ -3,6 +3,7 @@ FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /workdir
 COPY pom.xml .
 COPY src ./src
+RUN mvn dependency:go-offline
 RUN mvn package -DskipTests
 
 # Package stage
