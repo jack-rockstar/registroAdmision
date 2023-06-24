@@ -1,5 +1,5 @@
-# Utiliza una imagen base con Maven y Java instalados
-FROM maven:3.8.4-openjdk-11
+# Utiliza una imagen base con Maven y Java 11 instalados
+FROM maven:3.8.4-openjdk-11-slim
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -13,8 +13,8 @@ RUN mvn dependency:go-offline -B
 # Copia el resto de los archivos al contenedor
 COPY . .
 
-# Compila la aplicación usando Maven
-RUN mvn clean package -DskipTests
+# Compila la aplicación usando Maven en el directorio /target
+RUN mvn clean package -DskipTests -Dmaven.test.failure.ignore=true
 
 # Expone el puerto en el que se ejecuta tu aplicación
 EXPOSE 8080
