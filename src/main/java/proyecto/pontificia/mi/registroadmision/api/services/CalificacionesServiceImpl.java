@@ -36,7 +36,7 @@ public class CalificacionesServiceImpl implements CalificacionesService {
             califacionNueva.setEstudiante(estudiante);
 
             return califacionesRepository.save(califacionNueva);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new EntityNotFoundException("Error calificacion", e);
         }
     }
@@ -46,8 +46,8 @@ public class CalificacionesServiceImpl implements CalificacionesService {
         try {
             Page<Calificaciones> califaciones = califacionesRepository.findAll(pageable);
             return califaciones.getContent();
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -61,8 +61,8 @@ public class CalificacionesServiceImpl implements CalificacionesService {
             calificacionActual.setExamen(califaciones.getExamen());
 
             return califacionesRepository.save(calificacionActual);
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -72,8 +72,8 @@ public class CalificacionesServiceImpl implements CalificacionesService {
             Calificaciones califaciones = califacionesRepository.findById(id).orElseThrow(() -> new RuntimeException("Calificaciones no encontrado"));
             califacionesRepository.deleteById(id);
             return califaciones;
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

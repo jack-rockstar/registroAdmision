@@ -33,7 +33,7 @@ public class CarrerasServiceImpl implements CarrerasService {
             carrerasNuevo.setTipoEducacion(tipoEducacion);
 
             return carrerasRepository.save(carrerasNuevo);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new EntityNotFoundException("Error carrer no encontrado", e);
         }
     }
@@ -43,8 +43,8 @@ public class CarrerasServiceImpl implements CarrerasService {
         try {
             Page<Carreras> carreras = carrerasRepository.findAll(pageable);
             return carreras.getContent();
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -53,8 +53,8 @@ public class CarrerasServiceImpl implements CarrerasService {
         try {
             Carreras carreras = carrerasRepository.findById(id).orElseThrow(() -> new RuntimeException("Carreras no encontrado"));
             return carreras;
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -68,8 +68,8 @@ public class CarrerasServiceImpl implements CarrerasService {
             carrerasActuales.setTipoEducacion(carreras.getTipoEducacion());
 
             return carrerasRepository.save(carrerasActuales);
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -79,8 +79,8 @@ public class CarrerasServiceImpl implements CarrerasService {
             Carreras carreras = carrerasRepository.findById(id).orElseThrow(() -> new RuntimeException("Carreras no encontrado"));
             carrerasRepository.deleteById(id);
             return carreras;
-        }catch (Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 }
