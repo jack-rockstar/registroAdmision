@@ -1,6 +1,7 @@
 package proyecto.pontificia.mi.registroadmision.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class Usuario {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date fechaNacimiento;
     private String genero;
+    @Column(name = "user", unique = true)
     private String user;
     private String ubigeo;
     private String contraseña;
@@ -34,7 +36,4 @@ public class Usuario {
     @OneToOne()
     @JoinColumn(name = "idTipoPersona")
     private TipoPersona tipoPersona;
-
-
-
 }

@@ -42,9 +42,12 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setGenero(dataUsuario.getGenero());
             usuario.setUbigeo(dataUsuario.getUbigeo());
             usuario.setContraseña(dataUsuario.getContraseña());
-            Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
+            if(dataUsuario.getCarrera() != null){
+                Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
+                usuario.setCarrera(carreras);
+            }
 
-            usuario.setCarrera(carreras);
+
 
             TipoPersona tipoPersona = tipoPersonaRepository.findById(dataUsuario.getTipoPersona().getId()).orElseThrow(() -> new RuntimeException("Tipo Persona no encontrado"));
 
@@ -73,18 +76,20 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioActual.setUbigeo(dataUsuario.getUbigeo());
             usuarioActual.setGenero(dataUsuario.getGenero());
             usuarioActual.setContraseña(dataUsuario.getContraseña());
-            usuarioActual.setCarrera(dataUsuario.getCarrera());
-            //Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
+            //usuarioActual.setCarrera(dataUsuario.getCarrera());
+            if(dataUsuario.getCarrera() != null){
+                Carreras carreras = carrerasRepository.findById(dataUsuario.getCarrera().getId()).orElseThrow(() -> new RuntimeException("Carrera no encontrado"));
+                usuarioActual.setCarrera(carreras);
+            }
 
-            //usuarioActual.setCarrera(carreras);
 
-            //TipoPersona tipoPersona = tipoPersonaRepository.findById(dataUsuario.getTipoPersona().getId()).orElseThrow(() -> new RuntimeException("Tipo Persona no encontrado"));
+            TipoPersona tipoPersona = tipoPersonaRepository.findById(dataUsuario.getTipoPersona().getId()).orElseThrow(() -> new RuntimeException("Tipo Persona no encontrado"));
 
-            usuarioActual.setTipoPersona(dataUsuario.getTipoPersona());
+            usuarioActual.setTipoPersona(tipoPersona);
 
             return usuarioRepository.save(usuarioActual);
         }catch (Exception e){
-            throw new EntityNotFoundException("Error usuario no encontrado", e);
+            throw new EntityNotFoundException(e);
         }
     }
 

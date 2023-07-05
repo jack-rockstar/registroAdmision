@@ -29,12 +29,11 @@ public class CarrerasServiceImpl implements CarrerasService {
 
             carrerasNuevo.setNombreCarrera(carreras.getNombreCarrera());
             TipoEducacion tipoEducacion = tipoEducacionRepository.findById(carreras.getTipoEducacion().getId()).orElseThrow(() -> new RuntimeException("Tipo Educacion no encontrado"));
-
             carrerasNuevo.setTipoEducacion(tipoEducacion);
 
             return carrerasRepository.save(carrerasNuevo);
         } catch (Exception e) {
-            throw new EntityNotFoundException("Error carrer no encontrado", e);
+            throw new EntityNotFoundException(e);
         }
     }
 
