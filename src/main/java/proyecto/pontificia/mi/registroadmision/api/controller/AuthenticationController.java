@@ -1,10 +1,7 @@
 package proyecto.pontificia.mi.registroadmision.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import proyecto.pontificia.mi.registroadmision.api.DTO.LoginDto;
 import proyecto.pontificia.mi.registroadmision.api.model.Usuario;
 import proyecto.pontificia.mi.registroadmision.api.services.AuthenticationService;
@@ -12,6 +9,7 @@ import proyecto.pontificia.mi.registroadmision.api.services.UsuarioService;
 import proyecto.pontificia.mi.registroadmision.api.utils.Response;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
